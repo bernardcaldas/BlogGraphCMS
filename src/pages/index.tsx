@@ -1,7 +1,43 @@
 
+import { GetServerSideProps } from "next"
+import { Features } from "../components/Features"
+import { Hero } from "../components/Hero"
+import  {Pricing}  from "../components/Pricing"
+import { PageDocument, usePageQuery } from "../generated/graphql"
+import { client, ssrCache } from "../lib/urql"
+
 
 export default function Home() {
+  const [{data}] = usePageQuery({
+    variables: {
+      slug: 'about'
+    }
+  })
+  
   return (
-    <h1> Blog </h1>
+    <>
+    <Hero 
+      title={data?.page.title}
+      subtitle={data?.page.subtitle}
+    />
+
+    <Features />
+    <Pricing />
+
+
+    </>
+
   )
+}
+
+
+export const getServersideProps: GetServerSideProps = async () => {
+  await client.query(PageDocument,{slug: 'about'}).toPromise()
+  
+  return {
+    props: {
+      urqlState: ssrCache.extractData()
+
+    }
+  }
 }
