@@ -8,6 +8,12 @@ npm run dev
 # or
 yarn dev
 ```
+
+
+## Vercel link  
+
+https://blog-graphcms-inky.vercel.app/
+
 ## Results
 
 ![Screenshot](/public/mockup-mac.png)
