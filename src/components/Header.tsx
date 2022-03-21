@@ -14,7 +14,7 @@ export function Header() {
     <div className="relative bg-gray-50 overflow-hidden">
       <div className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full" aria-hidden="true">
         <div className="relative h-full max-w-7xl mx-auto">
-          <svg
+          <svg  
             className="absolute right-full transform translate-y-1/4 translate-x-1/4 lg:translate-x-1/2"
             width={404}
             height={784}
@@ -83,8 +83,8 @@ export function Header() {
               </div>
               <div className="hidden md:flex md:space-x-10">
                 {navigation.map((item) => (
-                  <Link href={item.href}>
-                    <a key={item.name} className="font-medium text-gray-500 hover:text-gray-900">
+                  <Link key={item.name} href={item.href}>
+                    <a  className="font-medium text-gray-500 hover:text-gray-900">
                       {item.name}
                     </a>
                   </Link>
